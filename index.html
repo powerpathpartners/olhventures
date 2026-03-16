@@ -166,22 +166,104 @@
             }
         }
 
+        /* Hamburger menu button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+            z-index: 1100;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile nav overlay */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 22, 40, 0.98);
+            z-index: 1050;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+            opacity: 1;
+        }
+
+        .mobile-nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 400;
+            font-family: 'DM Serif Display', serif;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-nav .mobile-nav-cta {
+            border: 1.5px solid var(--gold);
+            color: var(--gold);
+            padding: 0.8rem 2rem;
+            border-radius: 3px;
+            font-weight: 500;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            margin-top: 1rem;
+        }
+
         @media (max-width: 480px) {
             nav {
-                padding: 0.6rem 0.8rem;
+                padding: 0.6rem 1rem;
             }
 
             .nav-center {
                 display: none;
             }
 
-            .nav-logo img {
-                height: 40px;
+            .nav-cta {
+                display: none;
             }
 
-            .nav-cta {
-                padding: 0.5rem 1.2rem;
-                font-size: 0.75rem;
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-logo img {
+                height: 40px;
             }
         }
 
@@ -212,6 +294,15 @@
             object-fit: cover;
             opacity: 0.6;
             z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-video {
+                object-fit: contain;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: #0A1628;
+            }
         }
 
         /* Dark overlay on top of video for text readability */
@@ -1428,11 +1519,26 @@
             <a href="#contact">Contact</a>
         </div>
         <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Get in Touch</button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#about" onclick="closeMobileNav()">About</a>
+        <a href="#services" onclick="closeMobileNav()">Services</a>
+        <a href="#expertise" onclick="closeMobileNav()">Expertise</a>
+        <a href="#team" onclick="closeMobileNav()">Team</a>
+        <a href="#contact" onclick="closeMobileNav()">Contact</a>
+        <a href="#contact" class="mobile-nav-cta" onclick="closeMobileNav()">Get in Touch</a>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
+        <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" fetchpriority="high">
             <source src="hero-video.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
@@ -1708,6 +1814,28 @@
     </footer>
 
     <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileNav.classList.toggle('open');
+            document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+        });
+
+        function closeMobileNav() {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Force hero video to play immediately
+        const heroVid = document.getElementById('heroVideo');
+        if (heroVid) {
+            heroVid.play().catch(function() {});
+        }
+
         // Bio modal data
         const bios = {
             paul: {
