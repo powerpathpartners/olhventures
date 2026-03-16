@@ -29,7 +29,7 @@
         }
 
         html {
-            scroll-behavior: smooth;
+            scroll-behavior: auto;
         }
 
         body {
@@ -211,7 +211,7 @@
             position: relative;
             z-index: 10;
             max-width: 900px;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7), 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         .hero h1 {
@@ -992,9 +992,9 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            max-width: 700px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -1004,8 +1004,8 @@
         }
 
         .team-member .photo-glow {
-            width: 260px;
-            height: 260px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             position: absolute;
             top: -20px;
@@ -1022,8 +1022,8 @@
         }
 
         .team-member-photo {
-            width: 220px;
-            height: 220px;
+            width: 190px;
+            height: 190px;
             border-radius: 50%;
             margin: 0 auto 1.5rem;
             overflow: hidden;
@@ -1094,6 +1094,25 @@
             line-height: 1.6;
             max-width: 280px;
             margin: 0 auto;
+        }
+
+        /* Page transition overlay */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--navy-deep);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .page-transition.active {
+            opacity: 1;
+            pointer-events: all;
         }
 
         /* Bio Modal */
@@ -1181,6 +1200,7 @@
     </style>
 </head>
 <body>
+    <div class="page-transition" id="pageTransition"></div>
     <!-- Navigation -->
     <nav id="navbar">
         <a href="#home" class="nav-logo"><img src="header-logo.png" alt="OLH Ventures"></a>
@@ -1203,6 +1223,7 @@
         <div class="hero-content">
             <h1 data-anim="fadeIn" data-anim-speed="slow">The Commercial Engine for Hyperscale Development</h1>
             <p class="hero-subtitle" data-anim="fadeInUp" data-anim-speed="slow" data-anim-delay="300">OLH Ventures is a boutique firm helping Data Center Developers secure partners, close deals, and bring AI infrastructure projects to market.</p>
+            <p class="hero-subtitle" data-anim="fadeInUp" data-anim-speed="slow" data-anim-delay="500">OLH is where Hyperscale deals begin.</p>
             <div class="hero-ctas" data-anim="fadeInUp" data-anim-speed="normal" data-anim-delay="600">
                 <button class="btn btn-primary">Partner With Us</button>
                 <button class="btn btn-secondary" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })">Learn More</button>
@@ -1299,7 +1320,7 @@
                 <div class="advantage-item" data-anim="fadeInLeft" data-anim-speed="normal" data-anim-delay="200">
                     <div class="advantage-number">02</div>
                     <h3>Proven at Scale</h3>
-                    <p>We are currently closing one of the largest data center transactions of the year. Our track record speaks in billions, not millions.</p>
+                    <p>Our track record speaks in billions, not millions. Over $50B in closed Hyperscale transactions across every major market.</p>
                 </div>
                 <div class="advantage-item" data-anim="fadeInLeft" data-anim-speed="normal" data-anim-delay="400">
                     <div class="advantage-number">03</div>
@@ -1340,7 +1361,17 @@
                         <div class="read-bio-overlay">Read Bio</div>
                     </div>
                     <div class="team-member-name">Neil Hopkins</div>
-                    <div class="team-member-role">COO & Partner</div>
+                    <div class="team-member-role">COO & CMO</div>
+                </div>
+
+                <div class="team-member" data-anim="fadeInUp" data-anim-delay="400">
+                    <div class="photo-glow"></div>
+                    <div class="team-member-photo" onclick="openBio('melissa')">
+                        <img src="melissa-hopkins.jpg" alt="Melissa Hopkins">
+                        <div class="read-bio-overlay">Read Bio</div>
+                    </div>
+                    <div class="team-member-name">Melissa Hopkins</div>
+                    <div class="team-member-role">Founding Partner</div>
                 </div>
             </div>
         </div>
@@ -1456,12 +1487,17 @@
             paul: {
                 name: 'Paul Hopkins',
                 role: 'CEO & Founder',
-                text: 'Paul Hopkins brings more than 30 years of experience in commercial real estate and data center development. He has personally facilitated over $50B in Hyperscale transactions, building lasting relationships with procurement leaders at AWS, Microsoft Azure, Google Cloud, Meta, and Oracle. Paul founded OLH Ventures to give data center developers direct access to the commercial firepower typically reserved for the largest platforms in the world.'
+                text: 'Paul Hopkins has spent 25+ years on the commercial frontlines of the data center industry, from site acquisition and leasing to business development and AI infrastructure. He closed the first ever data center contract with Google in 1998 and has personally facilitated over $50B in Hyperscale transactions since, building direct relationships with procurement leaders at AWS, Microsoft Azure, Google Cloud, Meta, and Oracle. As the market shifts toward AI Factories and GPU-ready capacity, No one knows the commercial side of this business better. Paul founded OLH Ventures to give developers the fractional CRO firepower they need to close deals at scale, without building a sales organization from scratch. He currently serves as Fractional CRO of CloudBurst Data Centers.'
             },
             neil: {
                 name: 'Neil Hopkins',
-                role: 'COO & Partner',
-                text: 'Neil Hopkins is a strategic operator with deep expertise in Hyperscale infrastructure and global markets. As COO, he drives deal execution and partnership development, ensuring every engagement moves from introduction to signed agreement with speed and precision. Neil\'s background spans business development, operations, and market strategy across the data center and technology sectors.'
+                role: 'COO & CMO',
+                text: 'Neil Hopkins brings a rare combination of commercial strategy and narrative expertise to the data center industry. As COO, he leads deal execution, market positioning, and partnership development, translating complex infrastructure projects into compelling opportunities for Hyperscale tenants. Before entering the data center industry, Neil built a 20+ year career in every facet of Film & Television Production, from writing and directing to marketing, a unique background that gives OLH an edge in how it tells its clients\' stories.'
+            },
+            melissa: {
+                name: 'Melissa Hopkins',
+                role: 'Founding Partner',
+                text: 'Melissa Hopkins brings decades of sales leadership from the connectivity and data center industries to OLH Ventures. She was on the sales teams at Netcom, Level 3 Communications, and Equinix at the time of their IPOs, building an extensive network that now powers OLH\'s deal pipeline. As Founding Partner, Melissa leads client relationship management with a career spent inside the companies that built the internet\'s backbone. Her deep roots in the Palo Alto business community and two decades of leadership across civic and professional organizations give her an unmatched ability to open doors and build trust. A proud Filipina-American, she champions diversity and mentorship across the organization, with a particular focus on supporting young women entering the technology industry.'
             }
         };
 
@@ -1486,6 +1522,26 @@
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeBio();
+        });
+
+        // Page transition on nav clicks
+        const pageTransition = document.getElementById('pageTransition');
+        document.querySelectorAll('nav a[href^="#"], .footer-nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (!target) return;
+
+                pageTransition.classList.add('active');
+                setTimeout(() => {
+                    target.scrollIntoView();
+                    window.scrollBy(0, -80);
+                    setTimeout(() => {
+                        pageTransition.classList.remove('active');
+                    }, 150);
+                }, 250);
+            });
         });
 
         // Navbar scroll effect
