@@ -1430,23 +1430,23 @@
                         <label class="radio-group-label">Project stage</label>
                         <div class="radio-options">
                             <label class="radio-option">
-                                <input type="radio" name="stage" value="site-selection">
+                                <input type="radio" name="stage" value="Site Selection">
                                 <span>Site Selection</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="stage" value="entitled">
+                                <input type="radio" name="stage" value="Entitled / Permitted">
                                 <span>Entitled / Permitted</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="stage" value="capital-committed">
+                                <input type="radio" name="stage" value="Capital Committed">
                                 <span>Capital Committed</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="stage" value="under-construction">
+                                <input type="radio" name="stage" value="Under Construction">
                                 <span>Under Construction</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="stage" value="operational">
+                                <input type="radio" name="stage" value="Operational">
                                 <span>Operational</span>
                             </label>
                         </div>
@@ -1612,18 +1612,46 @@
 
             const form = event.target;
             const formSuccess = document.getElementById('formSuccess');
+            const submitBtn = form.querySelector('.form-submit');
 
-            // Show success message
-            formSuccess.classList.add('show');
+            // Disable button while submitting
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
 
-            // Reset form and char count
-            form.reset();
-            document.getElementById('charCount').textContent = '0';
+            // Map form fields to Google Form entry IDs
+            const googleFormUrl = 'https://docs.google.com/forms/d/1kp4Hm60Kf9o7CO1mNLu8GDMWsx-SIU6FLY7PoFXv8lQ/formResponse';
+            const formData = new URLSearchParams();
+            formData.append('entry.1920840316', form.firstName.value);
+            formData.append('entry.102163984', form.company.value);
+            formData.append('entry.1216426120', form.email.value);
+            formData.append('entry.570616334', form.phone.value);
+            formData.append('entry.1353851068', form.location.value);
+            formData.append('entry.1759340749', form.capacity.value);
+            const stage = form.querySelector('input[name="stage"]:checked');
+            if (stage) formData.append('entry.666525611', stage.value);
+            formData.append('entry.526845809', form.message.value);
 
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                formSuccess.classList.remove('show');
-            }, 5000);
+            // Submit to Google Forms via fetch (no-cors so it won't error on redirect)
+            fetch(googleFormUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData.toString()
+            }).then(() => {
+                formSuccess.classList.add('show');
+                form.reset();
+                document.getElementById('charCount').textContent = '0';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit';
+                setTimeout(() => { formSuccess.classList.remove('show'); }, 5000);
+            }).catch(() => {
+                formSuccess.classList.add('show');
+                form.reset();
+                document.getElementById('charCount').textContent = '0';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit';
+                setTimeout(() => { formSuccess.classList.remove('show'); }, 5000);
+            });
         }
 
         // Smooth scroll for buttons
