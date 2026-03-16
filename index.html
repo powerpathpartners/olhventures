@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OLH Ventures - Hyperscale Data Center Sales</title>
+    <title>OLH Ventures - Where AI Infrastructure Deals Begin</title>
+    <meta name="description" content="OLH Ventures is a boutique firm helping Data Center Developers secure partners, close deals, and bring AI infrastructure projects to market.">
+    <meta property="og:title" content="OLH Ventures - Where AI Infrastructure Deals Begin">
+    <meta property="og:description" content="The commercial engine for Hyperscale development. Fractional CRO for data center developers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://olhventures.com">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1382,21 +1387,21 @@
         <div class="contact-container">
             <div class="contact-grid">
                 <div class="contact-left" data-anim="fadeInLeft" data-anim-speed="normal">
-                    <div class="contact-label">Connect With Us</div>
-                    <h2>Connect with OLH.</h2>
-                    <p class="contact-subtitle">Accelerate your path to profitability.</p>
+                    <div class="contact-label">Start a Conversation</div>
+                    <h2>Tell us about your project.</h2>
+                    <p class="contact-subtitle">The more we know, the faster we move.</p>
                     <a href="mailto:info@olhventures.com" class="contact-email">info@olhventures.com</a>
                 </div>
 
                 <form class="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)" data-anim="fadeInRight" data-anim-speed="normal" data-anim-delay="200">
                     <div class="form-row">
                         <div class="form-field">
-                            <label for="firstName">First name</label>
+                            <label for="firstName">Name</label>
                             <input type="text" id="firstName" name="firstName" required>
                         </div>
                         <div class="form-field">
-                            <label for="lastName">Last name</label>
-                            <input type="text" id="lastName" name="lastName" required>
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company" required>
                         </div>
                     </div>
                     <div class="form-row">
@@ -1405,50 +1410,57 @@
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-field">
-                            <label for="phone">Phone number</label>
+                            <label for="phone">Phone</label>
                             <input type="tel" id="phone" name="phone">
                         </div>
                     </div>
 
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="location">Project location / market</label>
+                            <input type="text" id="location" name="location">
+                        </div>
+                        <div class="form-field">
+                            <label for="capacity">Target capacity (MW)</label>
+                            <input type="text" id="capacity" name="capacity">
+                        </div>
+                    </div>
+
                     <div class="form-radio-group">
-                        <label class="radio-group-label">Who are you in this deal</label>
+                        <label class="radio-group-label">Project stage</label>
                         <div class="radio-options">
                             <label class="radio-option">
-                                <input type="radio" name="role" value="landowner">
-                                <span>Landowner</span>
+                                <input type="radio" name="stage" value="site-selection">
+                                <span>Site Selection</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="role" value="Hyperscaler">
-                                <span>Hyperscaler</span>
+                                <input type="radio" name="stage" value="entitled">
+                                <span>Entitled / Permitted</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="role" value="advisor">
-                                <span>Advisor</span>
+                                <input type="radio" name="stage" value="capital-committed">
+                                <span>Capital Committed</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="role" value="developer">
-                                <span>Developer</span>
+                                <input type="radio" name="stage" value="under-construction">
+                                <span>Under Construction</span>
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="role" value="investor">
-                                <span>Investor</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="role" value="other">
-                                <span>Other</span>
+                                <input type="radio" name="stage" value="operational">
+                                <span>Operational</span>
                             </label>
                         </div>
                     </div>
 
                     <div class="form-field">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Tell us more" maxlength="600" oninput="updateCharCount()"></textarea>
+                        <label for="message">What are you looking to accomplish?</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tenant introductions, pre-lease structuring, market strategy, etc." maxlength="600" oninput="updateCharCount()"></textarea>
                         <div class="char-count"><span id="charCount">0</span> of 600 max characters</div>
                     </div>
 
-                    <button type="submit" class="form-submit">Send Message</button>
+                    <button type="submit" class="form-submit">Submit</button>
                     <div class="form-success" id="formSuccess">
-                        Thank you for reaching out. We'll get back to you within 24 hours.
+                        Thank you. We'll review your project details and be in touch within 24 hours.
                     </div>
                 </form>
             </div>
