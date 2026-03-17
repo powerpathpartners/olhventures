@@ -52,7 +52,7 @@
         }
 
         h1 {
-            font-size: clamp(2.8rem, 9vw, 5rem);
+            font-size: clamp(2.24rem, 7.2vw, 4rem);
             line-height: 1.1;
             letter-spacing: -0.5px;
         }
@@ -283,7 +283,6 @@
             overflow: hidden;
             text-align: center;
             padding: 2rem;
-            padding-top: calc(80px + 3rem);
         }
 
         .hero-video {
@@ -318,17 +317,8 @@
         .hero-content {
             position: relative;
             z-index: 10;
-            max-width: 1100px;
+            max-width: 900px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7), 0 4px 20px rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: calc(100vh - 80px - 6rem);
-            width: 100%;
-        }
-
-        .hero-text {
-            flex: 0 0 auto;
         }
 
         .hero h1 {
@@ -338,13 +328,14 @@
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--platinum);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             font-weight: 300;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.8;
         }
 
         .hero-ctas {
@@ -352,8 +343,7 @@
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: auto;
-            padding-bottom: 3rem;
+            margin-top: 2.5rem;
         }
 
         .btn {
@@ -401,25 +391,23 @@
 
             .hero-content {
                 max-width: 100%;
-                min-height: calc(100vh - 70px - 4rem);
             }
 
             .hero h1 {
-                font-size: 2.3rem;
+                font-size: 2rem;
                 margin-bottom: 1rem;
             }
 
             .hero-subtitle {
-                font-size: 1.1rem;
-                margin-bottom: 1rem;
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
                 max-width: 100%;
             }
 
             .hero-ctas {
                 flex-direction: column;
                 align-items: center;
-                margin-top: auto;
-                padding-bottom: 2.5rem;
+                margin-top: 2rem;
             }
 
             .btn {
@@ -435,29 +423,22 @@
                 min-height: 100vh;
                 min-height: 100dvh;
                 padding: 1rem;
-                padding-top: calc(60px + 1.5rem);
-            }
-
-            .hero-content {
-                min-height: calc(100vh - 60px - 3rem);
-                min-height: calc(100dvh - 60px - 3rem);
             }
 
             .hero h1 {
-                font-size: 1.85rem;
+                font-size: 1.7rem;
                 line-height: 1.15;
             }
 
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 0.95rem;
                 line-height: 1.6;
-                margin-bottom: 0.75rem;
+                margin-bottom: 0.4rem;
             }
 
             .hero-ctas {
-                margin-top: auto;
+                margin-top: 1.5rem;
                 gap: 1rem;
-                padding-bottom: 2rem;
             }
 
             .btn {
@@ -1661,11 +1642,9 @@
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="hero-text">
-                <h1 data-anim="fadeIn" data-anim-speed="slow">The Commercial Engine for Hyperscale Development</h1>
-                <p class="hero-subtitle" data-anim="fadeInUp" data-anim-speed="slow" data-anim-delay="300">OLH Ventures is a boutique firm helping Data Center Developers secure partners, facilitate transactions, and bring AI infrastructure projects to market.</p>
-                <p class="hero-subtitle" data-anim="fadeInUp" data-anim-speed="slow" data-anim-delay="500">OLH is where Hyperscale deals begin.</p>
-            </div>
+            <h1 data-anim="fadeIn" data-anim-speed="slow">The Commercial Engine for Hyperscale Development</h1>
+            <p class="hero-subtitle" data-anim="fadeInUp" data-anim-speed="slow" data-anim-delay="300">OLH Ventures is a boutique firm helping Data Center Developers secure partners, facilitate transactions, and bring AI infrastructure projects to market.</p>
+            <p class="hero-subtitle" data-anim="fadeInUp" data-anim-speed="slow" data-anim-delay="500">OLH is where Hyperscale deals begin.</p>
             <div class="hero-ctas" data-anim="fadeInUp" data-anim-speed="normal" data-anim-delay="600">
                 <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Partner With Us</button>
                 <button class="btn btn-secondary" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })">Learn More</button>
@@ -1721,7 +1700,7 @@
             <h2 data-anim="fadeInUp" data-anim-speed="normal" data-anim-delay="100">Full-Spectrum Deal Acceleration</h2>
             <div class="services-grid">
                 <div class="service-card" data-anim="fadeInLeft" data-anim-speed="normal">
-                    <h3>Tenant Acquisition</h3>
+                    <h3>Off-Taker Acquisition</h3>
                     <p>Direct introductions to Hyperscale procurement teams actively seeking new capacity.</p>
                 </div>
                 <div class="service-card" data-anim="fadeInRight" data-anim-speed="normal" data-anim-delay="100">
