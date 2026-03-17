@@ -277,7 +277,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             background: #0A1628;
             position: relative;
             overflow: hidden;
@@ -318,7 +318,7 @@
         .hero-content {
             position: relative;
             z-index: 10;
-            max-width: 900px;
+            max-width: 1100px;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7), 0 4px 20px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
@@ -1656,7 +1656,7 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" fetchpriority="high">
+        <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" fetchpriority="high" poster="hero-poster.jpg">
             <source src="hero-video.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
@@ -1667,14 +1667,14 @@
                 <p class="hero-subtitle" data-anim="fadeInUp" data-anim-speed="slow" data-anim-delay="500">OLH is where Hyperscale deals begin.</p>
             </div>
             <div class="hero-ctas" data-anim="fadeInUp" data-anim-speed="normal" data-anim-delay="600">
-                <button class="btn btn-primary">Partner With Us</button>
+                <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Partner With Us</button>
                 <button class="btn btn-secondary" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })">Learn More</button>
             </div>
         </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="stats" id="expertise">
+    <section class="stats" id="stats">
         <div class="stats-grid">
             <div class="stat-item" data-anim="zoomIn" data-anim-speed="normal">
                 <div class="stat-number">30+</div>
@@ -1689,8 +1689,8 @@
                 <div class="stat-label">Network Reach</div>
             </div>
             <div class="stat-item" data-anim="zoomIn" data-anim-speed="normal" data-anim-delay="450">
-                <div class="stat-number">#1</div>
-                <div class="stat-label">In Hyperscale Introductions</div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Principal-Led Engagements</div>
             </div>
         </div>
     </section>
@@ -1749,7 +1749,7 @@
     </section>
 
     <!-- Advantage Section -->
-    <section class="advantage">
+    <section class="advantage" id="expertise">
         <div class="advantage-content">
             <div class="section-label section-label-gap" data-anim="fadeIn" data-anim-speed="normal">Why Us</div>
             <h2 data-anim="fadeInUp" data-anim-speed="normal" data-anim-delay="100">The OLH Advantage</h2>
@@ -1766,8 +1766,8 @@
                 </div>
                 <div class="advantage-item" data-anim="fadeInLeft" data-anim-speed="normal" data-anim-delay="400">
                     <div class="advantage-number">03</div>
-                    <h3>Lean & Lethal</h3>
-                    <p>Enterprise-grade Hyperscale CRO at a fraction of the cost of an internal team. No overhead, no politics, just results.</p>
+                    <h3>Lean & High-Impact</h3>
+                    <p>Enterprise-grade Hyperscale CRO without the overhead of an internal team. Senior principals on every engagement, focused exclusively on outcomes.</p>
                 </div>
             </div>
         </div>
@@ -1776,8 +1776,8 @@
     <!-- Quote Section -->
     <section class="quote">
         <div class="quote-mark" data-anim="fadeIn" data-anim-speed="slow">"</div>
-        <p class="quote-text" data-anim="fadeInUp" data-anim-speed="slow" data-anim-delay="200">In this market, the developers who win are the ones who can get the right deal in front of the right tenant at the right time. That's what OLH does better than anyone.</p>
-        <p class="quote-attribution" data-anim="fadeInUp" data-anim-speed="normal" data-anim-delay="500">Paul Hopkins, CEO</p>
+        <p class="quote-text" data-anim="fadeInUp" data-anim-speed="slow" data-anim-delay="200">In this market, the developers who win are the ones who get the right deal in front of the right tenant at the right time. That's the standard we hold ourselves to on every engagement.</p>
+        <p class="quote-attribution" data-anim="fadeInUp" data-anim-speed="normal" data-anim-delay="500">OLH Ventures</p>
     </section>
 
     <!-- Team Section -->
@@ -1900,7 +1900,7 @@
 
                     <button type="submit" class="form-submit">Submit</button>
                     <div class="form-success" id="formSuccess">
-                        Thank you. We'll review your project details and be in touch within 24 hours.
+                        <strong>Received.</strong> A principal will personally review your project details and reach out within one business day to schedule an introductory call.
                     </div>
                 </form>
             </div>
