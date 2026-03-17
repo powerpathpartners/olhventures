@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerHouse Data Centers Case Study - OLH Ventures</title>
+    <meta name="description" content="How OLH Ventures CEO Paul Hopkins helped PowerHouse Data Centers lease 3 GW across multiple U.S. campuses in 24 months.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy-deep: #0A1628;
+            --navy-mid: #12203A;
+            --navy-light: #1C2E4A;
+            --slate-blue: #2A4066;
+            --platinum: #C0C8D4;
+            --white: #FFFFFF;
+            --gold: #D4A853;
+            --light-bg: #F0F2F5;
+            --text-light: #B8C0CC;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--navy-deep);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 22, 40, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gold);
+            box-shadow: 0 1px 8px rgba(212, 168, 83, 0.4);
+            z-index: 1000;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 88px;
+            width: auto;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-center a {
+            color: var(--platinum);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-center a:hover {
+            color: var(--white);
+            border-bottom-color: var(--gold);
+        }
+
+        .nav-cta {
+            border: 1.5px solid var(--gold);
+            color: var(--gold);
+            padding: 0.7rem 1.5rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: transparent;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--gold);
+            color: var(--navy-deep);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.8rem 1rem;
+            }
+            .nav-logo img {
+                height: 50px;
+            }
+            .nav-center {
+                display: none;
+            }
+            .nav-cta {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Case Study Hero */
+        .cs-hero {
+            padding: 10rem 2rem 5rem;
+            text-align: center;
+            background: linear-gradient(to bottom, var(--navy-deep) 0%, var(--navy-mid) 100%);
+            position: relative;
+        }
+
+        .cs-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+        }
+
+        .cs-label {
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .cs-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.15;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cs-hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--platinum);
+            font-weight: 300;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.7;
+            text-wrap: balance;
+        }
+
+        /* Key Stats Bar */
+        .cs-stats {
+            background-color: var(--light-bg);
+            padding: 3.5rem 2rem;
+        }
+
+        .cs-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cs-stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .cs-stat-label {
+            font-size: 0.9rem;
+            color: var(--navy-deep);
+            font-weight: 500;
+        }
+
+        @media (max-width: 600px) {
+            .cs-stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .cs-stat-number {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Case Study Body */
+        .cs-body {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .cs-meta {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--slate-blue);
+        }
+
+        .cs-meta-item {
+        }
+
+        .cs-meta-label {
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .cs-meta-value {
+            font-size: 0.95rem;
+            color: var(--platinum);
+            font-weight: 300;
+        }
+
+        /* Content Sections */
+        .cs-section {
+            margin-bottom: 3.5rem;
+        }
+
+        .cs-section-label {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cs-section-label::before {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .cs-section h2 {
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 1.2rem;
+        }
+
+        .cs-section p {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 300;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .cs-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cs-section ul li {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 300;
+            line-height: 1.8;
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+
+        .cs-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7em;
+            width: 6px;
+            height: 6px;
+            background-color: var(--gold);
+            border-radius: 50%;
+        }
+
+        /* Results highlight */
+        .cs-results {
+            background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+            border-left: 3px solid var(--gold);
+            border-radius: 0 6px 6px 0;
+            padding: 2.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .cs-results li {
+            color: var(--white) !important;
+            font-weight: 400 !important;
+            font-size: 1.05rem !important;
+        }
+
+        .cs-results li strong {
+            color: var(--gold);
+        }
+
+        /* CTA Section */
+        .cs-cta {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(to bottom, var(--navy-deep) 0%, var(--navy-mid) 100%);
+            position: relative;
+        }
+
+        .cs-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--slate-blue), transparent);
+        }
+
+        .cs-cta h2 {
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .cs-cta p {
+            font-size: 1.05rem;
+            color: var(--platinum);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cs-cta-btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--navy-deep);
+            padding: 1rem 2.5rem;
+            border-radius: 3px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            border: 2px solid var(--gold);
+        }
+
+        .cs-cta-btn:hover {
+            background-color: #E5B86F;
+            border-color: #E5B86F;
+            box-shadow: 0 8px 24px rgba(212, 168, 83, 0.2);
+        }
+
+        .cs-back {
+            display: inline-block;
+            margin-left: 1.5rem;
+            color: var(--platinum);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .cs-back:hover {
+            color: var(--white);
+            border-bottom-color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #051420;
+            border-top: 1px solid var(--slate-blue);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-badge {
+            position: absolute;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .footer-badge img {
+            height: 120px;
+            width: auto;
+            opacity: 1;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--platinum);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-copy {
+            color: var(--platinum);
+            font-size: 0.7rem;
+            font-weight: 300;
+            align-self: flex-end;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                padding: 2.5rem 1.5rem;
+            }
+            .footer-badge {
+                position: static;
+                transform: none;
+                margin-bottom: 1rem;
+            }
+            .footer-badge img {
+                height: 80px;
+            }
+            .footer-links {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.2rem;
+            }
+            .footer-copy {
+                align-self: center;
+            }
+            .cs-hero {
+                padding: 8rem 1.5rem 3rem;
+            }
+            .cs-body {
+                padding: 3rem 1.5rem;
+            }
+            .cs-meta {
+                grid-template-columns: 1fr 1fr;
+            }
+            .cs-results {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cs-hero {
+                padding: 7rem 1rem 2.5rem;
+            }
+            .cs-body {
+                padding: 2.5rem 1rem;
+            }
+            .cs-meta {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            footer {
+                padding: 2rem 1rem;
+            }
+            .footer-badge img {
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="nav-logo"><img src="header-logo.png" alt="OLH Ventures"></a>
+        <div class="nav-center">
+            <a href="index.html#about">About</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#expertise">Expertise</a>
+            <a href="index.html#team">Team</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="cs-hero">
+        <div class="cs-label">Case Study</div>
+        <h1>PowerHouse Data Centers</h1>
+        <p class="cs-hero-subtitle">How OLH Ventures CEO Paul Hopkins helped drive hyperscale lease momentum across multiple U.S. campuses, delivering one of the largest leasing totals in the country in 24 months.</p>
+    </section>
+
+    <!-- Key Stats -->
+    <section class="cs-stats">
+        <div class="cs-stats-grid">
+            <div>
+                <div class="cs-stat-number">3 GW</div>
+                <div class="cs-stat-label">Leased in 24 Months</div>
+            </div>
+            <div>
+                <div class="cs-stat-number">$3M+</div>
+                <div class="cs-stat-label">Monthly Contracted Revenue</div>
+            </div>
+            <div>
+                <div class="cs-stat-number">15 yr</div>
+                <div class="cs-stat-label">Lease Term Secured</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Body -->
+    <div class="cs-body">
+
+        <!-- Meta -->
+        <div class="cs-meta">
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Location</div>
+                <div class="cs-meta-value">Throughout the U.S.</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Sector</div>
+                <div class="cs-meta-value">Hyperscale & AI Data Centers</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Engagement Lead</div>
+                <div class="cs-meta-value">Paul Hopkins</div>
+            </div>
+            <div class="cs-meta-item">
+                <div class="cs-meta-label">Timeline</div>
+                <div class="cs-meta-value">24 months</div>
+            </div>
+        </div>
+
+        <!-- Scope -->
+        <div class="cs-section">
+            <div class="cs-section-label">The Challenge</div>
+            <h2>Hyperscale Demand Meets Market Headwinds</h2>
+            <p>PowerHouse Data Centers needed to build hyperscale lease momentum across multiple U.S. campuses at a time when record land costs and transmission constraints were slowing the entire market. The commercial challenge was clear: attract and close long-term hyperscale commitments at scale, across multiple geographies, in a compressed timeline.</p>
+        </div>
+
+        <!-- Strategy -->
+        <div class="cs-section">
+            <div class="cs-section-label">Our Approach</div>
+            <h2>Positioning, Negotiation & Structured Execution</h2>
+            <ul>
+                <li>Defined campus positioning and target off-taker profiles tailored to each market's power, connectivity, and permitting advantages</li>
+                <li>Led direct negotiations with hyperscalers for long-term capacity commitments, leveraging 30+ years of established relationships</li>
+                <li>Structured power allocations and lease terms optimized for multi-phase scalability, aligning developer economics with tenant requirements</li>
+            </ul>
+        </div>
+
+        <!-- Results -->
+        <div class="cs-section">
+            <div class="cs-section-label">Results</div>
+            <h2>Market-Defining Outcomes</h2>
+            <div class="cs-results">
+                <ul>
+                    <li><strong>3 GW leased in 24 months</strong> — one of the largest leasing totals in the U.S.</li>
+                    <li><strong>~$3 million/month</strong> in contracted revenue across a 15-year term</li>
+                    <li><strong>Established PowerHouse</strong> as a premier hyperscale landlord with sustained expansion momentum</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CTA -->
+    <section class="cs-cta">
+        <h2>Ready to Accelerate Your Project?</h2>
+        <p>Every engagement starts with a conversation about your site, your timeline, and your target tenants.</p>
+        <a href="index.html#contact" class="cs-cta-btn">Start a Conversation</a>
+        <a href="index.html" class="cs-back">&larr; Back to Home</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-badge">
+            <a href="https://www.linkedin.com/company/olhventures/" target="_blank"><img src="olh-logo-full.png" alt="OLH Ventures"></a>
+        </div>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html#about">About</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="https://www.linkedin.com/company/olhventures/" target="_blank">LinkedIn</a>
+            </div>
+            <div class="footer-copy">&copy; 2026 OLH Ventures. All rights reserved.</div>
+        </div>
+    </footer>
+
+</body>
+</html>
