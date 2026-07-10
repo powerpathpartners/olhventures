@@ -405,6 +405,11 @@
                 margin-bottom: 1rem;
             }
 
+            .hero h1 br,
+            .hero-subtitle br {
+                display: none;
+            }
+
             .hero-subtitle {
                 font-size: 1rem;
                 margin-bottom: 0.5rem;
@@ -1951,10 +1956,19 @@
             document.body.style.overflow = '';
         }
 
-        // Force hero video to play immediately
+        // Force hero video to play immediately + retry on mobile
         const heroVid = document.getElementById('heroVideo');
         if (heroVid) {
             heroVid.play().catch(function() {});
+            // Retry on visibility change (e.g. switching tabs back)
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) heroVid.play().catch(function() {});
+            });
+            // Retry on first user touch (iOS fallback)
+            document.addEventListener('touchstart', function mobilePlay() {
+                heroVid.play().catch(function() {});
+                document.removeEventListener('touchstart', mobilePlay);
+            }, { once: true });
         }
 
         // Bio modal data
