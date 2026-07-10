@@ -1322,6 +1322,7 @@
         .team {
             background: var(--navy-mid);
             padding: 6rem 0;
+            scroll-margin-top: -80px;
         }
 
         .team .section-container {
@@ -1658,12 +1659,12 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" fetchpriority="high" poster="hero-poster.jpg">
+        <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="hero-poster.jpg">
             <source src="hero-video.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 data-anim="fadeIn" data-anim-speed="slow">Where AI Infrastructure Demand<br>Meets Capital Allocation</h1>
+            <h1 data-anim="fadeInUp" data-anim-speed="slow">Where AI Infrastructure Demand<br>Meets Capital Allocation</h1>
             <p class="hero-subtitle" data-anim="fadeInUp" data-anim-speed="slow" data-anim-delay="300">Demand intelligence, deal execution,<br>and risk management for hyperscale transactions.</p>
             <div class="hero-ctas" data-anim="fadeInUp" data-anim-speed="normal" data-anim-delay="600">
                 <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Partner With Us</button>
@@ -1782,10 +1783,10 @@
     <!-- Team Section -->
     <section class="team" id="team">
         <div class="section-container">
-            <div class="section-label" style="text-align: center;" data-anim="fadeIn" data-anim-speed="normal">The Team</div>
+            <div id="team-label" class="section-label" style="text-align: center;" data-anim="fadeIn" data-anim-speed="normal">The Team</div>
             <h2 data-anim="fadeInUp" data-anim-speed="normal" data-anim-delay="100">The Principals</h2>
             <p class="team-subtitle" data-anim="fadeInUp" data-anim-speed="normal" data-anim-delay="200">Three decades of Hyperscale relationships, powered by a team that moves at the speed of the market.</p>
-            <div class="team-grid">
+            <div id="team-photos" class="team-grid">
                 <div class="team-member" data-anim="fadeInLeft" data-anim-speed="normal" data-anim-delay="300">
                     <div class="photo-glow"></div>
                     <div class="team-member-photo" onclick="openBio('paul')">
@@ -1956,20 +1957,29 @@
             document.body.style.overflow = '';
         }
 
-        // Force hero video to play immediately + retry on mobile
-        const heroVid = document.getElementById('heroVideo');
-        if (heroVid) {
-            heroVid.play().catch(function() {});
-            // Retry on visibility change (e.g. switching tabs back)
-            document.addEventListener('visibilitychange', function() {
-                if (!document.hidden) heroVid.play().catch(function() {});
-            });
-            // Retry on first user touch (iOS fallback)
-            document.addEventListener('touchstart', function mobilePlay() {
-                heroVid.play().catch(function() {});
-                document.removeEventListener('touchstart', mobilePlay);
-            }, { once: true });
+        // Force hero video to play on all devices including iOS
+        function forceVideoPlay() {
+            var v = document.getElementById('heroVideo');
+            if (!v) return;
+            v.muted = true;
+            v.setAttribute('playsinline', '');
+            v.setAttribute('webkit-playsinline', '');
+            var p = v.play();
+            if (p !== undefined) {
+                p.catch(function() {
+                    // Retry after short delay
+                    setTimeout(function() { v.play().catch(function(){}); }, 500);
+                });
+            }
         }
+        forceVideoPlay();
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) forceVideoPlay();
+        });
+        document.addEventListener('touchstart', function() {
+            forceVideoPlay();
+        }, { once: true });
+        window.addEventListener('load', forceVideoPlay);
 
         // Bio modal data
         const bios = {
